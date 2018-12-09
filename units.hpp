@@ -1148,33 +1148,33 @@ namespace units
     namespace constants
     {
         // Physical constants:
-        const value<double, compose<units::J, pow<units::K, -1> > > k (1.3806504e-23);
-        const value<double, units::kg> mu (1.660538782e-27);
-        const value<double, pow<units::mol,-1> > NA (6.02214179e23);
-        const value<double, units::s> G0 (7.7480917004e-5);
-        const value<double, compose<units::F, pow<units::m,-1> > > e0 (8.854187817e-12);
-        const value<double, units::kg> me (9.10938215e-31);
-        const value<double, units::J> eV (1.602176487e-19);
-        const value<double, units::C> e (1.602176487e-19);
-        const value<double, units::F> F (96485.3399);
-        const value<double, units::unit> alpha (7.2973525376e-3);
-        const value<double, units::unit> inv_alpha (137.035999679);
-        const value<double, compose<units::N, pow<units::A,-2> > > u0 (12.566370614);
-        const value<double, units::Wb> phi0 (2.067833667e-15);	// ??
-        const value<double, compose<units::J, compose<pow<units::mol,-1>, pow<units::kg,-1> > > > R (8.314472);
-        const value<double, compose< pow<units::m,3>, compose<pow<units::kg,-1>, pow<units::s,-2> > > > G (6.67428e-11);
-        const value<double, compose< units::J, units::s > > h (6.62606896e-34);
-        const value<double, compose< units::J, units::s > > h_bar (1.054571628e-34);
-        const value<double, units::kg> mp (1.672621637e-27);
-        const value<double, unit> mpme (1836.15267247);
-        const value<double, pow<units::m,-1> > Rinf (10973731.568527);
-        const value<double, compose<units::m, pow<units::s,-1> > > c (299792458);
-        const value<double, compose<units::W, compose< pow<units::m,-1>, pow<units::K, -4> > > > rho (5.6704e-8);
+        constexpr value<double, compose<units::J, pow<units::K, -1> > > k (1.3806504e-23);
+        constexpr value<double, units::kg> mu (1.660538782e-27);
+        constexpr value<double, pow<units::mol,-1> > NA (6.02214179e23);
+        constexpr value<double, units::s> G0 (7.7480917004e-5);
+        constexpr value<double, compose<units::F, pow<units::m,-1> > > e0 (8.854187817e-12);
+        constexpr value<double, units::kg> me (9.10938215e-31);
+        constexpr value<double, units::J> eV (1.602176487e-19);
+        constexpr value<double, units::C> e (1.602176487e-19);
+        constexpr value<double, units::F> F (96485.3399);
+        constexpr value<double, units::unit> alpha (7.2973525376e-3);
+        constexpr value<double, units::unit> inv_alpha (137.035999679);
+        constexpr value<double, compose<units::N, pow<units::A,-2> > > u0 (12.566370614);
+        constexpr value<double, units::Wb> phi0 (2.067833667e-15);	// ??
+        constexpr value<double, compose<units::J, compose<pow<units::mol,-1>, pow<units::kg,-1> > > > R (8.314472);
+        constexpr value<double, compose< pow<units::m,3>, compose<pow<units::kg,-1>, pow<units::s,-2> > > > G (6.67428e-11);
+        constexpr value<double, compose< units::J, units::s > > h (6.62606896e-34);
+        constexpr value<double, compose< units::J, units::s > > h_bar (1.054571628e-34);
+        constexpr value<double, units::kg> mp (1.672621637e-27);
+        constexpr value<double, unit> mpme (1836.15267247);
+        constexpr value<double, pow<units::m,-1> > Rinf (10973731.568527);
+        constexpr value<double, compose<units::m, pow<units::s,-1> > > c (299792458);
+        constexpr value<double, compose<units::W, compose< pow<units::m,-1>, pow<units::K, -4> > > > rho (5.6704e-8);
 
         // Other constants:
-        const value<double, units::rad> pi (3.141592653589793);
-        const value<double, units::m> lightyear (9.4605284e15);
-        const value<double, compose<units::m, pow<units::s,-2> > > g ( 9.80665 );
+        constexpr value<double, units::rad> pi (3.141592653589793);
+        constexpr value<double, units::m> lightyear (9.4605284e15);
+        constexpr value<double, compose<units::m, pow<units::s,-2> > > g ( 9.80665 );
     }
 
 
@@ -1216,6 +1216,17 @@ namespace units
     Value fabs( const value<Value, Unit> & val )
     {
         return std::fabs( val.get() );
+    }
+
+    namespace ISA_constants {
+        // atmospheric constants we use all the time in aviation:
+        constexpr value<double, compose<units::K, pow<units::m, -1>>> T_r (0.0065);     // lapse rate until tropopause
+        constexpr value<double, units::K> T_Tr(216.65);     // tropopause temp
+        constexpr value<double, units::K> T_0 (288.15);     // sealevel temp
+        constexpr value<double, units::inHg> P_0(29.92126); // pressure at sealevel
+        constexpr value<double, units::knot> CS_0(661.4786);// speed of sound at sealevel at standard temp
+        constexpr value<double, units::foot> h_r(36089.24); // tropopause altitude
+        constexpr value<double, compose<units::kg, pow<units::m3, -1>>> rho_0(1.2250);
     }
 }
 
