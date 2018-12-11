@@ -7,7 +7,6 @@
 
 #include <iostream>
 
-#define UNITS_STREAM_OUTPUT 1
 #include "units.hpp"
 
 using namespace units::values;

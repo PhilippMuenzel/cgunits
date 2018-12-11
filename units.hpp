@@ -781,16 +781,13 @@ namespace units
         };
     }
 
-    // This tends to grab the output stream for boost::archive, which we DONT want.
-#ifdef UNITS_STREAM_OUTPUT
-    template<typename Str, typename Value, typename Unit>
-    Str & operator<<(Str & os, const value<Value, Unit> & value )
+    template<typename Value, typename Unit>
+    std::ostream & operator<<(std::ostream & os, const value<Value, Unit> & value )
     {
         os << value.get() << ' ';
         output_unit<Unit>::fn( os );
         return os;
     }
-#endif
 }
 
 
@@ -1200,6 +1197,12 @@ namespace units
     Value tan( const value<Value, Unit> & angle )
     {
         return std::tan( value<Value, units::rad>(angle).get() );
+    }
+
+    template<typename Value, typename Unit>
+    Value atan2( const value<Value, Unit> & y, const value<Value, Unit> & x  )
+    {
+        return std::atan2( value<Value, units::rad>(y).get(), value<Value, units::rad>(x).get() );
     }
 
     template<typename Value, typename Unit>
