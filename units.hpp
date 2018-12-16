@@ -25,6 +25,13 @@
 #ifndef CG_UNITS_HPP_INCLUDED
 #define CG_UNITS_HPP_INCLUDED
 
+// This checks whether we have the C++14 behavior of constexpr on non-static member functions not implying const
+#if __cpp_constexpr >= 201304L
+#  define CONSTEXPR_MEM constexpr
+#else
+#  define CONSTEXPR_MEM
+#endif
+
 #include <cmath>
 #include <boost/serialization/nvp.hpp>
 
@@ -89,7 +96,7 @@ namespace units
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr value(const value<OtherValue, OtherUnits> & v) noexcept(noexcept(value_type{v.get()})):
+        CONSTEXPR_MEM value(const value<OtherValue, OtherUnits> & v) noexcept(noexcept(value_type{v.get()})):
             m_rep{ detail::convert<OtherUnits, Units>::fn( v.get() ) }
         {
         }
@@ -100,7 +107,7 @@ namespace units
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr value & operator=(const value<OtherValue, OtherUnits> & other) noexcept(noexcept(value_type{other.get()}))
+        CONSTEXPR_MEM value & operator=(const value<OtherValue, OtherUnits> & other) noexcept(noexcept(value_type{other.get()}))
         {
             m_rep = value(other).get();
             return *this;

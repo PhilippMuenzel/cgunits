@@ -34,6 +34,12 @@ At 270 knots, which is 500.04 km/h, it takes 1.66667 hours to get there, or 100 
 We could be much quicker at the speed of light: 2.99792e+08 m/s
 ```
 
+# Compatibility
+The library is tested to work with these toolsets:
+* clang 6 on Ubuntu 18.04 LTS
+* XCode 10.1 on macOS 10.13.6
+* Visual C++ 2017 15.9 on Windows 10 1803
+
 # Users
 This or earlier versions of CG units are used in:
 * X-Plane 11
