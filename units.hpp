@@ -78,76 +78,78 @@ namespace units
         typedef Value value_type;
         typedef Units unit;
 
-        constexpr value() : m_rep(value_type{})
+        constexpr value() noexcept(noexcept(value_type{})) :
+            m_rep(value_type{})
         {
         }
 
-        constexpr explicit value(const value_type & v) : m_rep(v)
+        constexpr explicit value(const value_type & v) noexcept(noexcept(value_type{v})):
+            m_rep{v}
         {
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr value(const value<OtherValue, OtherUnits> & v) :
-            m_rep( detail::convert<OtherUnits, Units>::fn( v.get() ) )
+        constexpr value(const value<OtherValue, OtherUnits> & v) noexcept(noexcept(value_type{v.get()})):
+            m_rep{ detail::convert<OtherUnits, Units>::fn( v.get() ) }
         {
         }
 
-        constexpr const value_type & get() const
+        constexpr const value_type & get() const noexcept
         {
             return m_rep;
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr value & operator=(const value<OtherValue, OtherUnits> & other)
+        constexpr value & operator=(const value<OtherValue, OtherUnits> & other) noexcept(noexcept(value_type{other.get()}))
         {
             m_rep = value(other).get();
             return *this;
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr value operator+(const value<OtherValue, OtherUnits> & other) const
+        constexpr value operator+(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(value_type{get()+other.get()}))
         {
             return value( get() + value(other).get() );
         }
 
         template<typename OtherValue, typename OtherUnits>
-        value &operator+=(const value<OtherValue, OtherUnits> & other)
+        value &operator+=(const value<OtherValue, OtherUnits> & other) noexcept(noexcept(value_type{get()+other.get()}))
         {
             m_rep += value(other).get();
             return *this;
         }
 
         template<typename OtherValue, typename OtherUnits>
-        value &operator-=(const value<OtherValue, OtherUnits> & other)
+        value &operator-=(const value<OtherValue, OtherUnits> & other) noexcept(noexcept(value_type{get()-other.get()}))
         {
             m_rep -= value(other).get();
             return *this;
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr value operator-(const value<OtherValue, OtherUnits> & other) const
+        constexpr value operator-(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(value_type{get()-other.get()}))
         {
             return value( get() - value(other).get() );
         }
 
-        constexpr value operator-() const
+        constexpr value operator-() const noexcept(noexcept(value_type{-get()}))
         {
             return value( -get() );
         }
 
         template<typename OtherValue, typename OtherUnits>
         value< Value, compose<Units, OtherUnits> >
-            operator*(const value<OtherValue, OtherUnits> & other) const
+            operator*(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(value_type{get()*other.get()}))
         {
             return value<Value, compose<Units, OtherUnits> >( get() * other.get() );
         }
 
-        constexpr value operator*(const value_type & v) const
+        constexpr value operator*(const value_type & v) const noexcept(noexcept(value_type{get()*v}))
         {
             return value( get() * v );
         }
 
-        value & operator*=(const value_type & v)
+        value & operator*=(const value_type & v) noexcept(noexcept(value_type{get()*v}))
         {
             m_rep *= v;
             return *this;
@@ -155,78 +157,78 @@ namespace units
 
         template<typename OtherValue, typename OtherUnits>
         constexpr value< Value, compose<Units, pow<OtherUnits, -1> > >
-            operator/(const value<OtherValue, OtherUnits> & other) const
+            operator/(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(value_type{get()/other.get()}))
         {
             return value<Value, compose<Units, pow<OtherUnits, -1> > >( get() / other.get() );
         }
 
-        constexpr value operator/(const value_type & v) const
+        constexpr value operator/(const value_type & v) const noexcept(noexcept(value_type{get()/v}))
         {
             return value( get() / v );
         }
 
-        value & operator/=(const value_type & v)
+        value & operator/=(const value_type & v) noexcept(noexcept(value_type{get()/v}))
         {
             m_rep /= v;
             return *this;
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr bool operator==(const value<OtherValue, OtherUnits> & other) const
+        constexpr bool operator==(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(get()==other.get()))
         {
             return get() == value(other).get();
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr bool operator!=(const value<OtherValue, OtherUnits> & other) const
+        constexpr bool operator!=(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(get()!=other.get()))
         {
             return get() != value(other).get();
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr bool operator<(const value<OtherValue, OtherUnits> & other) const
+        constexpr bool operator<(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(get()<other.get()))
         {
             return get() < value(other).get();
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr bool operator<=(const value<OtherValue, OtherUnits> & other) const
+        constexpr bool operator<=(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(get()<=other.get()))
         {
             return get() <= value(other).get();
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr bool operator>(const value<OtherValue, OtherUnits> & other) const
+        constexpr bool operator>(const value<OtherValue, OtherUnits> & other) const  noexcept(noexcept(get()>other.get()))
         {
             return get() > value(other).get();
         }
 
         template<typename OtherValue, typename OtherUnits>
-        constexpr bool operator>=(const value<OtherValue, OtherUnits> & other) const
+        constexpr bool operator>=(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(get()>=other.get()))
         {
             return get() >= value(other).get();
         }
 
-        value & operator++()
+        value & operator++() noexcept(noexcept(value_type{m_rep++}))
         {
             ++m_rep;
             return *this;
         }
 
-        value operator++(int)
+        value operator++(int) noexcept(noexcept(value_type{m_rep++}))
         {
             value v = *this;
             ++m_rep;
             return v;
         }
 
-        value & operator--()
+        value & operator--() noexcept(noexcept(value_type{m_rep--}))
         {
             --m_rep;
             return *this;
         }
 
-        value operator--(int)
+        value operator--(int) noexcept(noexcept(value_type{m_rep--}))
         {
             value v = *this;
             --m_rep;
@@ -245,28 +247,28 @@ namespace units
 
 
     template<typename Value, typename Unit>
-    constexpr value<Value, pow<Unit,-1> > operator/(const Value & a, const value<Value, Unit> & b)
+    constexpr value<Value, pow<Unit,-1> > operator/(const Value & a, const value<Value, Unit> & b) noexcept(noexcept(value<Value, pow<Unit,-1> >{a/b.get()}))
     {
         return value<Value, pow<Unit,-1> >( a / b.get() );
     }
 
 
     template<typename Value, typename Unit>
-    constexpr value<Value, Unit > operator*(const Value & a, const value<Value, Unit> & b)
+    constexpr value<Value, Unit > operator*(const Value & a, const value<Value, Unit> & b) noexcept(noexcept(value<Value, Unit >{a*b.get()}))
     {
         return value<Value, Unit>( a * b.get() );
     }
 
 
     template<typename Value, typename Unit>
-    value<Value, pow<Unit, 1, 2> > sqrt(const value<Value, Unit> & a)
+    value<Value, pow<Unit, 1, 2> > sqrt(const value<Value, Unit> & a) noexcept(false)
     {
         return value<Value, pow<Unit, 1, 2> >( std::sqrt(a.get()) );
     }
 
 
     template<int Num, int Den, typename Value, typename Unit>
-    constexpr value<Value, pow<Unit, Num, Den> > raise(const value<Value, Unit> & a)
+    constexpr value<Value, pow<Unit, Num, Den> > raise(const value<Value, Unit> & a) noexcept(noexcept(detail::fixed_power<Num,Den>::pow(a.get())))
     {
         return value<Value, pow<Unit, Num, Den> >( detail::fixed_power<Num,Den>::pow(a.get()) );
     }
@@ -306,7 +308,7 @@ namespace units
             // The default implementation assumes that the two quantities are in compatible
             // units up to some scaling factor.  Find the scaling factor and apply it.
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{v}))
             {
                 return v * scaling_factor<T2>::template fn<V>() / scaling_factor<T1>::template fn<V>();
             }
@@ -320,7 +322,7 @@ namespace units
         struct convert2
         {
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{v}))
             {
                 return convert3<T1,T2>::fn(v);
             }
@@ -338,7 +340,7 @@ namespace units
             unit_static_assert< convertible<T1,T2>::value > check_convertible;
 
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{v}))
             {
                 return convert2<T1,T2>::fn(v);
             }
@@ -351,7 +353,7 @@ namespace units
         struct convert<T, T>
         {
             template<typename U>
-            static constexpr const U& fn(const U & u) { return u; }
+            static constexpr const U& fn(const U & u) noexcept { return u; }
         };
 
 
@@ -360,7 +362,7 @@ namespace units
         struct convert3<T, T>
         {
             template<typename U>
-            static constexpr const U & fn(const U & u) { return u; }
+            static constexpr const U & fn(const U & u) noexcept { return u; }
         };
 
 
@@ -369,7 +371,7 @@ namespace units
         struct convert2<scale<T, Num, Den>, U>
         {
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{convert<T,U>::fn(v)}))
             {
                 return convert<T,U>::fn((v * Den)/Num);
             }
@@ -381,7 +383,7 @@ namespace units
         struct convert3<T, scale<U, Num, Den> >
         {
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{convert<T,U>::fn(v)}))
             {
                 return (convert<T,U>::fn(v) * Num)/ Den;
             }
@@ -393,7 +395,7 @@ namespace units
         struct convert2<translate<T, Num, Den>, U>
         {
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{convert<T,U>::fn(v)}))
             {
                 return convert<T,U>::fn(v - static_cast<V>(Num) / static_cast<V>(Den));
             }
@@ -405,7 +407,7 @@ namespace units
         struct convert3<T, translate<U, Num, Den> >
         {
             template<typename V>
-            static constexpr V fn(const V & v)
+            static constexpr V fn(const V & v) noexcept(noexcept(V{convert<T, U>::fn(v)}))
             {
                 return convert<T,U>::fn(v) + static_cast<V>(Num) / static_cast<V>(Den);
             }
@@ -537,7 +539,7 @@ namespace units
         template<int Num, int Den, int Div, int Mod>
         struct fixed_power
         {
-            template<typename T> static T pow(const T & t)
+            template<typename T> static T pow(const T & t) noexcept(false)
             {
                 return std::pow(t, static_cast<T>(Num)/static_cast<T>(Den));
             }
@@ -547,7 +549,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, 1, 0>
         {
-            template<typename T> static constexpr const T & pow(const T & t)
+            template<typename T> static constexpr const T & pow(const T & t) noexcept
             {
                 return t;
             }
@@ -557,7 +559,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, 2, 0>
         {
-            template<typename T> static constexpr T pow(const T & t)
+            template<typename T> static constexpr T pow(const T & t) noexcept(noexcept(t*t))
             {
                 return t*t;
             }
@@ -567,7 +569,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, 3, 0>
         {
-            template<typename T> static constexpr T pow(const T & t)
+            template<typename T> static constexpr T pow(const T & t) noexcept(noexcept(t*t))
             {
                 return t*t*t;
             }
@@ -577,7 +579,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, 4, 0>
         {
-            template<typename T> static constexpr const T & pow(const T & t)
+            template<typename T> static constexpr const T & pow(const T & t) noexcept(noexcept(T{t*t}))
             {
                 T u = t*t;
                 return u*u;
@@ -588,7 +590,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, -1, 0>
         {
-            template<typename T> static constexpr T pow(const T & t)
+            template<typename T> static constexpr T pow(const T & t) noexcept(noexcept(T{1/t}))
             {
                 return 1/t;
             }
@@ -598,7 +600,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, -2, 0>
         {
-            template<typename T> static constexpr T pow(const T & t)
+            template<typename T> static constexpr T pow(const T & t) noexcept(noexcept(T{1/(t*t)}))
             {
                 return 1/(t*t);
             }
@@ -608,7 +610,7 @@ namespace units
         template<int N, int D>
         struct fixed_power<N, D, 0, 0>
         {
-            template<typename T> static constexpr T pow(const T&)
+            template<typename T> static constexpr T pow(const T&) noexcept(noexcept(T{1}))
             {
                 return 1;
             }
@@ -621,7 +623,10 @@ namespace units
         struct scaling_factor
         {
             template<typename T>
-            static constexpr T fn() { return 1; }
+            static constexpr T fn() noexcept(noexcept(T{1}))
+            {
+                return 1;
+            }
         };
 
 
@@ -629,7 +634,7 @@ namespace units
         struct scaling_factor< compose<U1, U2> >
         {
             template<typename T>
-            static constexpr T fn()
+            static constexpr T fn() noexcept(noexcept(T{}))
             {
                 return
                     scaling_factor<U1>::template fn<T>() *
@@ -642,7 +647,7 @@ namespace units
         struct scaling_factor< scale<U, N, D> >
         {
             template<typename T>
-            static constexpr T fn()
+            static constexpr T fn() noexcept(noexcept(T{}))
             {
                 return
                     scaling_factor<U>::template fn<T>() *
@@ -655,7 +660,7 @@ namespace units
         struct scaling_factor< pow<U, N, D> >
         {
             template<typename T>
-            static constexpr T fn()
+            static constexpr T fn() noexcept(false)
             {
                 return fixed_power<N,D>::pow( scaling_factor<U>::template fn<T>() );
             }
@@ -666,7 +671,7 @@ namespace units
         struct scaling_factor< translate<U, N, D> >
         {
             template<typename T>
-            static constexpr T fn()
+            static constexpr T fn() noexcept(noexcept(T{}))
             {
                 return scaling_factor<U>::template fn<T>();
             }
