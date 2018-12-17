@@ -17,7 +17,7 @@ int main()
 {
     nautical_mile dist(450);
     knot groundspeed(270);
-    cout << "We need to travel " << dist << ", which is " << statue_mile(dist) << endl;
+    cout << "We need to travel " << dist << ", which is " << mile(dist) << endl;
     cout << "At " << groundspeed << ", which is " << kph(groundspeed) << ", it takes " << hour(dist/groundspeed)
     << " to get there, or " << minute(dist/groundspeed) << endl;
 

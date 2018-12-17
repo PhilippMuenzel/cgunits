@@ -944,7 +944,7 @@ namespace units
         typedef scale<cm, 100, 254> inch;
         typedef scale<inch, 1, 12> foot;
         typedef scale<inch, 1, 36> yard;
-        typedef scale<yard, 1, 1760> statue_mile;
+        typedef scale<yard, 1, 1760> mile;
         typedef scale<m, 1, 1852> nautical_mile;
 
         // Non-SI area
@@ -964,7 +964,7 @@ namespace units
         typedef scale<liter, 1000, 3785> gallon;
 
         // Non-SI velocity
-        typedef compose<statue_mile, pow<hour,-1> > mph;
+        typedef compose<mile, pow<hour,-1> > mph;
         typedef compose<km, pow<hour,-1> > kph;
         typedef compose<m, pow<s,-1> > meters_per_second;
         typedef compose<nautical_mile, pow<hour,-1> > knot;
@@ -1013,7 +1013,7 @@ namespace units
     UNIT_DISPLAY_NAME( units::inch,         "inches" )
     UNIT_DISPLAY_NAME( units::foot,         "foot" )
     UNIT_DISPLAY_NAME( units::yard,         "yards" )
-    UNIT_DISPLAY_NAME( units::statue_mile,  "statue miles" )
+    UNIT_DISPLAY_NAME( units::mile,         "miles" )
     UNIT_DISPLAY_NAME( units::nautical_mile,"nautical miles" )
     UNIT_DISPLAY_NAME( units::hectare,      "ha" )
     UNIT_DISPLAY_NAME( units::are,          "are" )
@@ -1110,7 +1110,7 @@ namespace units
         typedef value<double, units::inch> inch;
         typedef value<double, units::foot> foot;
         typedef value<double, units::yard> yard;
-        typedef value<double, units::statue_mile> statue_mile;
+        typedef value<double, units::mile> statue_mile;
         typedef value<double, units::nautical_mile> nautical_mile;
 
         typedef value<double, units::m2> m2;
