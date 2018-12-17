@@ -40,6 +40,7 @@ The library is tested to work with these toolsets:
 * clang 3.4 on Ubuntu 14.04 LTS
 * XCode 10.1 on macOS 10.13.6
 * Visual C++ 2017 15.9 on Windows 10 1803
+* Visual C++ 2015 Update 3 on Windows 10 1803
 
 # Users
 This or earlier versions of CG units are used in:
