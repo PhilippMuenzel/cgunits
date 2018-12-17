@@ -216,26 +216,26 @@ namespace units
             return get() >= value(other).get();
         }
 
-        value & operator++() noexcept(noexcept(value_type{m_rep++}))
+        value & operator++() noexcept(noexcept(value_type{get()++}))
         {
             ++m_rep;
             return *this;
         }
 
-        value operator++(int) noexcept(noexcept(value_type{m_rep++}))
+        value operator++(int) noexcept(noexcept(value_type{get()++}))
         {
             value v = *this;
             ++m_rep;
             return v;
         }
 
-        value & operator--() noexcept(noexcept(value_type{m_rep--}))
+        value & operator--() noexcept(noexcept(value_type{get()--}))
         {
             --m_rep;
             return *this;
         }
 
-        value operator--(int) noexcept(noexcept(value_type{m_rep--}))
+        value operator--(int) noexcept(noexcept(value_type{get()--}))
         {
             value v = *this;
             --m_rep;

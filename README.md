@@ -37,6 +37,7 @@ We could be much quicker at the speed of light: 2.99792e+08 m/s
 # Compatibility
 The library is tested to work with these toolsets:
 * clang 6 on Ubuntu 18.04 LTS
+* clang 3.4 on Ubuntu 14.04 LTS
 * XCode 10.1 on macOS 10.13.6
 * Visual C++ 2017 15.9 on Windows 10 1803
 
