@@ -1110,7 +1110,7 @@ namespace units
         typedef value<double, units::inch> inch;
         typedef value<double, units::foot> foot;
         typedef value<double, units::yard> yard;
-        typedef value<double, units::mile> statue_mile;
+        typedef value<double, units::mile> mile;
         typedef value<double, units::nautical_mile> nautical_mile;
 
         typedef value<double, units::m2> m2;
