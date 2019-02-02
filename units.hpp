@@ -1155,6 +1155,116 @@ namespace units
         typedef value<double, units::gph> gph;
     }
 
+	namespace floatvalues
+	{
+		typedef value<float, units::unit> unit;
+
+		// SI units
+		typedef value<float, units::m> m;
+		typedef value<float, units::kg> kg;
+		typedef value<float, units::s> s;
+		typedef value<float, units::K> K;
+		typedef value<float, units::A> A;
+		typedef value<float, units::mol> mol;
+		typedef value<float, units::cd> cd;
+
+		// SI derived
+		typedef value<float, units::rad> rad;
+		typedef value<float, units::sr> sr;
+		typedef value<float, units::Hz> Hz;
+		typedef value<float, units::N> N;
+		typedef value<float, units::Pa> Pa;
+		typedef value<float, units::J> J;
+		typedef value<float, units::W> W;
+		typedef value<float, units::C> C;
+		typedef value<float, units::V> V;
+		typedef value<float, units::F> F;
+		typedef value<float, units::Ohm> Ohm;
+		typedef value<float, units::S> S;
+		typedef value<float, units::Wb> Wb;
+		typedef value<float, units::T> T;
+		typedef value<float, units::H> H;
+		typedef value<float, units::lm> lm;
+		typedef value<float, units::lx> lx;
+		typedef value<float, units::Bq> Bq;
+		typedef value<float, units::Gy> Gy;
+		typedef value<float, units::Sv> Sv;
+		typedef value<float, units::kat> kat;
+
+		// Prefixed units
+		typedef value<float, units::cm> cm;
+		typedef value<float, units::mm> mm;
+		typedef value<float, units::km> km;
+		typedef value<float, units::g> g;
+		typedef value<float, units::mg> mg;
+		typedef value<float, units::ms> ms;
+
+		// Non-SI
+		typedef value<float, units::lb> lb;
+		typedef value<float, units::oz> oz;
+		typedef value<float, units::tonne> tonne;
+
+		typedef value<float, units::Celsius> Celsius;
+		typedef value<float, units::Fahrenheit> Fahrenheit;
+		typedef value<float, units::Rankine> Rankine;
+
+		typedef value<float, units::minute> minute;
+		typedef value<float, units::hour> hour;
+		typedef value<float, units::day> day;
+		typedef value<float, units::week> week;
+		typedef value<float, units::month> month;
+		typedef value<float, units::year> year;
+		typedef value<float, units::century> century;
+		typedef value<float, units::millennium> millennium;
+
+		typedef value<float, units::inch> inch;
+		typedef value<float, units::foot> foot;
+		typedef value<float, units::yard> yard;
+		typedef value<float, units::mile> mile;
+		typedef value<float, units::nautical_mile> nautical_mile;
+
+		typedef value<float, units::m2> m2;
+		typedef value<float, units::hectare> hectare;
+		typedef value<float, units::are> are;
+		typedef value<float, units::inch2> inch2;
+		typedef value<float, units::acre> acre;
+
+		typedef value<float, units::cm3> cm3;
+		typedef value<float, units::ml> ml;
+		typedef value<float, units::cl> cl;
+		typedef value<float, units::liter> liter;
+		typedef value<float, units::dl> dl;
+		typedef value<float, units::m3> m3;
+		typedef value<float, units::gallon> gallon;
+
+		typedef value<float, units::mph> mph;
+		typedef value<float, units::kph> kph;
+		typedef value<float, units::meters_per_second> meters_per_second;
+		typedef value<float, units::knot> knot;
+		typedef value<float, units::fpm> fpm;
+
+		typedef value<float, units::degree> degree;
+		typedef value<float, units::grad> grad;
+		typedef value<float, units::degree_minute> degree_minute;
+		typedef value<float, units::degree_second> degree_second;
+
+		typedef value<float, units::kPa> kPa;
+		typedef value<float, units::psi> psi;
+		typedef value<float, units::millibar> millibar;
+		typedef value<float, units::hPa> hPa;
+		typedef value<float, units::inHg> inHg;
+		typedef value<float, units::mmHg> mmHg;
+		typedef value<float, units::Torr> Torr;
+
+		typedef value<float, units::percent> percent;
+		typedef value<float, units::rpm> rpm;
+		typedef value<float, units::dozen> dozen;
+		typedef value<float, units::bakers_dozen> bakers_dozen;
+
+		typedef value<float, units::kgph> kgph;
+		typedef value<float, units::gph> gph;
+	}
+
 
     namespace constants
     {
@@ -1237,13 +1347,13 @@ namespace units
 
     namespace ISA_constants {
         // atmospheric constants we use all the time in aviation:
-        constexpr value<double, compose<units::K, pow<units::m, -1>>> T_r (0.0065);     // lapse rate until tropopause
-        constexpr value<double, units::K> T_Tr(216.65);     // tropopause temp
-        constexpr value<double, units::K> T_0 (288.15);     // sealevel temp
-        constexpr value<double, units::inHg> P_0(29.92126); // pressure at sealevel
-        constexpr value<double, units::knot> CS_0(661.4786);// speed of sound at sealevel at standard temp
-        constexpr value<double, units::foot> h_r(36089.24); // tropopause altitude
-        constexpr value<double, compose<units::kg, pow<units::m3, -1>>> rho_0(1.2250);
+        constexpr value<float, compose<units::K, pow<units::m, -1>>> T_r (0.0065);     // lapse rate until tropopause
+        constexpr value<float, units::K> T_Tr(216.65);     // tropopause temp
+        constexpr value<float, units::K> T_0 (288.15);     // sealevel temp
+        constexpr value<float, units::inHg> P_0(29.92126); // pressure at sealevel
+        constexpr value<float, units::knot> CS_0(661.4786);// speed of sound at sealevel at standard temp
+        constexpr value<float, units::foot> h_r(36089.24); // tropopause altitude
+        constexpr value<float, compose<units::kg, pow<units::m3, -1>>> rho_0(1.2250);
     }
 }
 
