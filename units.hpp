@@ -34,6 +34,7 @@
 
 #include <cmath>
 #include <boost/serialization/nvp.hpp>
+#include <iostream>
 
 namespace units
 {
