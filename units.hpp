@@ -982,7 +982,7 @@ namespace units
         typedef scale<kPa, 1450377, 10000000> psi;
         typedef scale<kPa, 10> millibar;
         typedef scale<kPa, 10> hPa;
-        typedef scale<hPa, 3386389, 100000> inHg;
+        typedef scale<hPa, 100000, 3386389> inHg;
         typedef scale<Pa, 1000, 133322> Torr;
         typedef scale<Torr, 1> mmHg;
 
