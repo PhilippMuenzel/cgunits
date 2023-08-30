@@ -250,6 +250,7 @@ namespace units
         {
             ar & BOOST_SERIALIZATION_NVP(m_rep);
         }
+
         value_type m_rep;
     };
 
@@ -995,6 +996,12 @@ namespace units
         // fuel flow
         typedef compose< kg, pow<hour, -1> > kgph;
         typedef compose< gallon, pow<hour, -1> > gph;
+
+        // density
+        typedef compose<kg, pow<cm3, -1> > kgpcm3;
+        typedef compose<kg, pow<m3, -1> > kgpm3;
+        typedef compose<kg, pow<liter, -1> > kgpl;
+        typedef compose<lb, pow<gallon, -1> > lbpgal;
     }
 
     UNIT_DISPLAY_NAME( units::lb,           "lb" )
@@ -1045,6 +1052,11 @@ namespace units
     UNIT_DISPLAY_NAME( units::bakers_dozen, "bakers dozen" )
     UNIT_DISPLAY_NAME( units::kgph,         "kg/h" )
     UNIT_DISPLAY_NAME( units::gph,          "gph" )
+
+    UNIT_DISPLAY_NAME( units::kgpcm3,       "kg/cm3" );
+    UNIT_DISPLAY_NAME( units::kgpm3,        "kg/m3" );
+    UNIT_DISPLAY_NAME( units::kgpl,         "kg/l" );
+    UNIT_DISPLAY_NAME( units::lbpgal,        "lbs/gallon" );
 
     namespace values
     {
@@ -1154,6 +1166,11 @@ namespace units
 
         typedef value<double, units::kgph> kgph;
         typedef value<double, units::gph> gph;
+
+        typedef value<double, units::kgpcm3> kgpcm3;
+        typedef value<double, units::kgpm3> kgpm3;
+        typedef value<double, units::kgpl> kgpl;
+        typedef value<double, units::lbpgal> lbpgal;
     }
 
 	namespace floatvalues
@@ -1264,7 +1281,12 @@ namespace units
 
 		typedef value<float, units::kgph> kgph;
 		typedef value<float, units::gph> gph;
-	}
+
+        typedef value<float, units::kgpcm3> kgpcm3;
+        typedef value<float, units::kgpm3> kgpm3;
+        typedef value<float, units::kgpl> kgpl;
+        typedef value<float, units::lbpgal> lbpgal;
+    }
 
 
     namespace constants
