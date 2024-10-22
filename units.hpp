@@ -1376,7 +1376,9 @@ namespace units
         constexpr value<float, units::inHg> P_0(29.92126); // pressure at sealevel
         constexpr value<float, units::knot> CS_0(661.4786);// speed of sound at sealevel at standard temp
         constexpr value<float, units::foot> h_r(36089.24); // tropopause altitude
+        constexpr value<float, units::Pa>   P_r(22632.228427);   // tropopause pressure
         constexpr value<float, compose<units::kg, pow<units::m3, -1>>> rho_0(1.2250);
+        constexpr value<float, compose<units::J, pow<compose<units::kg, units::K>, -1>>> CRGasSI(287.053);
     }
 }
 
