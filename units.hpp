@@ -181,6 +181,8 @@ namespace units
             return *this;
         }
 
+		auto operator<=>(const value& other) const = default;
+
         template<typename OtherValue, typename OtherUnits>
         constexpr bool operator==(const value<OtherValue, OtherUnits> & other) const noexcept(noexcept(get()==other.get()))
         {
