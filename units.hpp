@@ -994,6 +994,7 @@ namespace units
         typedef scale<unit, 100> percent;
         typedef scale<unit, 1, 12> dozen;
         typedef scale<unit, 1, 13> bakers_dozen;
+        typedef compose<m, pow<s, -2> > ms2;
 
         // fuel flow
         typedef compose< kg, pow<hour, -1> > kgph;
@@ -1052,6 +1053,7 @@ namespace units
     UNIT_DISPLAY_NAME( units::rpm,          "rpm" )
     UNIT_DISPLAY_NAME( units::dozen,        "dozen" )
     UNIT_DISPLAY_NAME( units::bakers_dozen, "bakers dozen" )
+    UNIT_DISPLAY_NAME( units::ms2,          "m/s2" )
     UNIT_DISPLAY_NAME( units::kgph,         "kg/h" )
     UNIT_DISPLAY_NAME( units::gph,          "gph" )
 
@@ -1165,6 +1167,7 @@ namespace units
         typedef value<double, units::rpm> rpm;
         typedef value<double, units::dozen> dozen;
         typedef value<double, units::bakers_dozen> bakers_dozen;
+        typedef value<double, units::ms2> ms2;
 
         typedef value<double, units::kgph> kgph;
         typedef value<double, units::gph> gph;
@@ -1280,6 +1283,7 @@ namespace units
 		typedef value<float, units::rpm> rpm;
 		typedef value<float, units::dozen> dozen;
 		typedef value<float, units::bakers_dozen> bakers_dozen;
+		typedef value<float, units::ms2> ms2;
 
 		typedef value<float, units::kgph> kgph;
 		typedef value<float, units::gph> gph;
@@ -1353,28 +1357,28 @@ namespace units
     }
 
     template<typename Value, typename Unit>
-	value<Value, Unit> floor( const value<Value, Unit> & val )
+    value<Value, Unit> floor( const value<Value, Unit> & val )
     {
         return value<Value, Unit>(std::floor( val.get() ));
     }
 
     template<typename Value, typename Unit>
-	value<Value, Unit> ceil( const value<Value, Unit> & val )
+    value<Value, Unit> ceil( const value<Value, Unit> & val )
     {
         return value<Value, Unit>(std::ceil( val.get() ));
     }
 
     template<typename Value, typename Unit>
-	value<Value, Unit> abs( const value<Value, Unit> & val )
+    value<Value, Unit> abs( const value<Value, Unit> & val )
     {
         return value<Value, Unit>(std::abs( val.get() ));
     }
 
-	template<typename Value, typename Unit>
-	value<int, Unit> intround( const value<Value, Unit> & val )
-	{
-		return value<int, Unit>(std::round( val.get() ));
-	}
+    template<typename Value, typename Unit>
+    value<int, Unit> intround( const value<Value, Unit> & val )
+    {
+        return value<int, Unit>(std::round( val.get() ));
+    }
 
     namespace ISA_constants {
         // atmospheric constants we use all the time in aviation:
