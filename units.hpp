@@ -1353,22 +1353,28 @@ namespace units
     }
 
     template<typename Value, typename Unit>
-    Value floor( const value<Value, Unit> & val )
+	value<Value, Unit> floor( const value<Value, Unit> & val )
     {
-        return std::floor( val.get() );
+        return value<Value, Unit>(std::floor( val.get() ));
     }
 
     template<typename Value, typename Unit>
-    Value ceil( const value<Value, Unit> & val )
+	value<Value, Unit> ceil( const value<Value, Unit> & val )
     {
-        return std::ceil( val.get() );
+        return value<Value, Unit>(std::ceil( val.get() ));
     }
 
     template<typename Value, typename Unit>
-    Value fabs( const value<Value, Unit> & val )
+	value<Value, Unit> abs( const value<Value, Unit> & val )
     {
-        return std::fabs( val.get() );
+        return value<Value, Unit>(std::abs( val.get() ));
     }
+
+	template<typename Value, typename Unit>
+	value<int, Unit> intround( const value<Value, Unit> & val )
+	{
+		return value<int, Unit>(std::round( val.get() ));
+	}
 
     namespace ISA_constants {
         // atmospheric constants we use all the time in aviation:
