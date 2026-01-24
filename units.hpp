@@ -1350,10 +1350,12 @@ namespace units
         return std::tan( value<Value, units::rad>(angle).get() );
     }
 
-    template<typename Value, typename Unit>
-    Value atan2( const value<Value, Unit> & y, const value<Value, Unit> & x  )
+
+    template<typename Value, typename Unit1, typename Unit2>
+    value<Value, units::rad> atan2( const value<Value, Unit1> & y, const value<Value, Unit2> & x )
     {
-        return std::atan2( value<Value, units::rad>(y).get(), value<Value, units::rad>(x).get() );
+        static_assert(detail::convertible<Unit1,Unit2>::value, "Units passed to atan function are not convertible");
+        return value<Value, units::rad>( std::atan2( y.get(), value<Value, Unit1>(x).get() ) );
     }
 
     template<typename Value, typename Unit>
@@ -1377,7 +1379,7 @@ namespace units
     template<typename Value, typename Unit>
     value<int, Unit> intround( const value<Value, Unit> & val )
     {
-        return value<int, Unit>(std::round( val.get() ));
+        return value<int, Unit>(static_cast<int>(std::round( val.get() )));
     }
 
     namespace ISA_constants {
