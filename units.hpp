@@ -1377,9 +1377,9 @@ namespace units
     }
 
     template<typename Value, typename Unit>
-    value<int, Unit> intround( const value<Value, Unit> & val )
+    value<Value, Unit> intround( const value<Value, Unit> & val )
     {
-        return value<int, Unit>(static_cast<int>(std::round( val.get() )));
+        return value<Value, Unit>(static_cast<int>(std::round( val.get() )));
     }
 
     namespace ISA_constants {
