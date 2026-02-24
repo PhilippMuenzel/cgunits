@@ -1000,6 +1000,9 @@ namespace units
         typedef compose< kg, pow<hour, -1> > kgph;
         typedef compose< gallon, pow<hour, -1> > gph;
 
+        // specific consumption
+        typedef compose<lb, pow<compose<hour, lb>, -1> > lbperlbhr;
+
         // density
         typedef compose<kg, pow<cm3, -1> > kgpcm3;
         typedef compose<kg, pow<m3, -1> > kgpm3;
@@ -1172,6 +1175,8 @@ namespace units
         typedef value<double, units::kgph> kgph;
         typedef value<double, units::gph> gph;
 
+        typedef value<double, units::lbperlbhr> lbperlbhr;
+
         typedef value<double, units::kgpcm3> kgpcm3;
         typedef value<double, units::kgpm3> kgpm3;
         typedef value<double, units::kgpl> kgpl;
@@ -1287,6 +1292,8 @@ namespace units
 
 		typedef value<float, units::kgph> kgph;
 		typedef value<float, units::gph> gph;
+        typedef value<float, units::lbperlbhr> lbperlbhr;
+
 
         typedef value<float, units::kgpcm3> kgpcm3;
         typedef value<float, units::kgpm3> kgpm3;
