@@ -999,6 +999,8 @@ namespace units
         // fuel flow
         typedef compose< kg, pow<hour, -1> > kgph;
         typedef compose< gallon, pow<hour, -1> > gph;
+        typedef compose< m3, pow<s, -1> > m3ps;
+        typedef compose <kg, pow<s, -1> > kgps;
 
         // specific consumption
         typedef compose<lb, pow<compose<hour, lb>, -1> > lbperlbhr;
@@ -1059,11 +1061,13 @@ namespace units
     UNIT_DISPLAY_NAME( units::ms2,          "m/s2" )
     UNIT_DISPLAY_NAME( units::kgph,         "kg/h" )
     UNIT_DISPLAY_NAME( units::gph,          "gph" )
+    UNIT_DISPLAY_NAME( units::m3ps,         "m3/s" )
+    UNIT_DISPLAY_NAME( units::kgps,         "kg/s" )
 
-    UNIT_DISPLAY_NAME( units::kgpcm3,       "kg/cm3" );
-    UNIT_DISPLAY_NAME( units::kgpm3,        "kg/m3" );
-    UNIT_DISPLAY_NAME( units::kgpl,         "kg/l" );
-    UNIT_DISPLAY_NAME( units::lbpgal,        "lbs/gallon" );
+    UNIT_DISPLAY_NAME( units::kgpcm3,       "kg/cm3" )
+    UNIT_DISPLAY_NAME( units::kgpm3,        "kg/m3" )
+    UNIT_DISPLAY_NAME( units::kgpl,         "kg/l" )
+    UNIT_DISPLAY_NAME( units::lbpgal,       "lbs/gallon" )
 
     namespace values
     {
@@ -1174,6 +1178,9 @@ namespace units
 
         typedef value<double, units::kgph> kgph;
         typedef value<double, units::gph> gph;
+
+        typedef value<double, units::m3ps> m3ps;
+        typedef value<double, units::kgps> kgps;
 
         typedef value<double, units::lbperlbhr> lbperlbhr;
 
@@ -1292,8 +1299,11 @@ namespace units
 
 		typedef value<float, units::kgph> kgph;
 		typedef value<float, units::gph> gph;
-        typedef value<float, units::lbperlbhr> lbperlbhr;
 
+        typedef value<float, units::m3ps> m3ps;
+        typedef value<float, units::kgps> kgps;
+
+        typedef value<float, units::lbperlbhr> lbperlbhr;
 
         typedef value<float, units::kgpcm3> kgpcm3;
         typedef value<float, units::kgpm3> kgpm3;
