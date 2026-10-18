@@ -960,6 +960,7 @@ namespace units
 
         // Non-SI volume
         typedef pow<cm, 3> cm3;
+        typedef pow<inch, 3> cuin;
         typedef cm3 ml;
         typedef scale<ml, 1, 1000> liter;
         typedef scale<liter, 10> dl;
@@ -1010,6 +1011,9 @@ namespace units
         typedef compose<kg, pow<m3, -1> > kgpm3;
         typedef compose<kg, pow<liter, -1> > kgpl;
         typedef compose<lb, pow<gallon, -1> > lbpgal;
+
+        //power
+        typedef scale<W, 10, 7457> hp;
     }
 
     UNIT_DISPLAY_NAME( units::lb,           "lb" )
@@ -1068,6 +1072,7 @@ namespace units
     UNIT_DISPLAY_NAME( units::kgpm3,        "kg/m3" )
     UNIT_DISPLAY_NAME( units::kgpl,         "kg/l" )
     UNIT_DISPLAY_NAME( units::lbpgal,       "lbs/gallon" )
+    UNIT_DISPLAY_NAME( units::hp,           "hp" )
 
     namespace values
     {
@@ -1144,6 +1149,7 @@ namespace units
         typedef value<double, units::acre> acre;
 
         typedef value<double, units::cm3> cm3;
+        typedef value<double, units::cuin> cuin;
         typedef value<double, units::ml> ml;
         typedef value<double, units::cl> cl;
         typedef value<double, units::liter> liter;
@@ -1188,6 +1194,8 @@ namespace units
         typedef value<double, units::kgpm3> kgpm3;
         typedef value<double, units::kgpl> kgpl;
         typedef value<double, units::lbpgal> lbpgal;
+
+        typedef value<double, units::hp> hp;
     }
 
 	namespace floatvalues
@@ -1265,6 +1273,7 @@ namespace units
 		typedef value<float, units::acre> acre;
 
 		typedef value<float, units::cm3> cm3;
+		typedef value<float, units::cuin> cuin;
 		typedef value<float, units::ml> ml;
 		typedef value<float, units::cl> cl;
 		typedef value<float, units::liter> liter;
@@ -1309,6 +1318,8 @@ namespace units
         typedef value<float, units::kgpm3> kgpm3;
         typedef value<float, units::kgpl> kgpl;
         typedef value<float, units::lbpgal> lbpgal;
+
+        typedef value<float, units::hp> hp;
     }
 
 
